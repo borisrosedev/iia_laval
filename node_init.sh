@@ -1,0 +1,11 @@
+#!/bin/bash
+
+create_node_api_boilerplate(){
+    cd node-api 
+    npm init -y #initialise un package.json
+    npm install  -D cors express dotenv
+    touch server.js
+    npm pkg set scripts.dev="node --watch server.js"
+}
+
+create_node_api_boilerplate
