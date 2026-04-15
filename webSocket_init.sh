@@ -1,7 +1,10 @@
+# Nous permet de créer notre environnement de développement pour une API Node.js 
+# en utilisant Express.js et Socket.io pour les fonctionnalités de WebSocket.
+
 #!/bin/bash
 
 create_node_api_boilerplate() {
-    cd node-api
+    cd webSocket
     #initialise un package.json
     npm init -y
     npm install -D cors express dotenv
