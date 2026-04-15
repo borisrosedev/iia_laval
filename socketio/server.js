@@ -8,16 +8,16 @@ const { availableParallelism } = require('node:os');
 const cluster = require('node:cluster');
 const { createAdapter, setupPrimary } = require('@socket.io/cluster-adapter');
 
-if (cluster.isPrimary) {
-    const numCPUs = availableParallelism();
-    for (let i = 0; i < numCPUs; i++) {
-        cluster.fork({
-            PORT: 3000 + i
-        });
-    }
-
-    return setupPrimary();
-}
+// if (cluster.isPrimary) {
+//     const numCPUs = availableParallelism();
+//     for (let i = 0; i < numCPUs; i++) {
+//         cluster.fork({
+//             PORT: 3000 + i
+//         });
+//     }
+//
+//     return setupPrimary();
+// }
 
 async function main() {
     const db = await open({
@@ -36,7 +36,7 @@ async function main() {
     const server = createServer(app);
     const io = new Server(server, {
         connectionStateRecovery: {},
-        adapter: createAdapter()
+        // adapter: createAdapter()
     });
     const port = process.env.PORT;
 
@@ -77,7 +77,7 @@ async function main() {
     });
 
     server.listen(3000, () => {
-        console.log(`server running at http://localhost:${port}/`);
+        console.log(`server running at http://localhost:${3000}/`);
     });
 }
 
