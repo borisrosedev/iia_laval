@@ -1,11 +1,18 @@
 // GIRARD ERWAN
 // Licence 3
 
+//======================================================================
+
+// LIEN GITHUB : https://github.com/borisrosedev/iia_laval/tree/Erwan
+
+//======================================================================
+
 // RSX102 Technologies pour les applications en réseau
 
 // TP : WebSocket
 
 // Il y a de nombreuse dépendance à importer dans le code afin de faire un server WebSocket.
+
 
 // Les dépendance nécéssaires :
 
@@ -64,3 +71,13 @@
 // const io = new Server(server, {
 //   connectionStateRecovery: {}
 // });
+
+
+// PARTIE LANGUAGE BAS NIVEAU Rust
+
+// if let ProtocolSocketInfo::Tcp(info_tcp) = socket.protocol_socket_info
+//     • Cette ligne me permet de savoir si le protocole est du TCP
+
+// if let netstat::TcpState::Listen = info_tcp.state
+//     • Ici le listen permet de vérifier si le port est en écoute et donc ouvert.
+
