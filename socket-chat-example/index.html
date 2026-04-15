@@ -103,7 +103,6 @@
                 // compute a unique offset
                 const clientOffset = `${socket.id}-${counter++}`;
                 socket.emit('chat message', input.value, clientOffset);
-                socket.emit('chat message', input.value);
                 input.value = '';
             }
         });
@@ -117,5 +116,4 @@
         });
     </script>
 </body>
-
 </html>
