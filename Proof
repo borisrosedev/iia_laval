@@ -1,0 +1,1 @@
+curl.exe --% -X POST http://localhost:3000/api/v1/users -H "Content-Type: application/json" -d "{\"email\":\"ethan@gmail.com\",\"password\":\"1234\"}"
