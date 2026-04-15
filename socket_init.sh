@@ -7,6 +7,7 @@ create_socket_api_boilerplate(){
     npm install express@4
     npm install socket.io
     npm install sqlite sqlite3
+    npm install "@socket.io/cluster-adapter"
 
     # Créer le fichier index.js
     touch index.js
