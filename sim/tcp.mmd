@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Note over Client: State: Closed
+    Note over Server: State: Closed
+
+    Server->>Server: listen()
+    Note over Server: State: Listen
+
+    Client->>Server: SYN (connect())
+    Note over Client: State: SynSent
+
+    Server->>Client: SYN-ACK
+    Note over Server: State: SynReceived
+
+    Client->>Server: ACK
+    Note over Client: State: Established
+
+    Server->>Server: receive(ACK)
+    Note over Server: State: Established
