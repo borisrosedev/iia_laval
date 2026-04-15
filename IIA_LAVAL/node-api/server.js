@@ -12,6 +12,17 @@ app.get("/", (req , res) => {
     res.status(200).json( {message: "All Good"})
 })
 
+
+app.post("/api/v1/users", (req, res) => {
+    const body = req.body
+    const email = body.email
+    const password = body.password
+    console.log("Server log: email ==>" + email)
+    console.log("Server log: password ==> " + password)
+    return res.status(201).json({ messages: "user created"})
+})
+
 app.listen(app.get('port'),()=>{
     console.log(`Server running at http://${app.get('host')}:${app.get('port')}`)
 })
+
