@@ -1,0 +1,6 @@
+(tcp.seq == 1 && tcp.ack == 1&&tcp.len==0 && !tcp.flags.fin == 1)||tcp.flags.syn==1
+
+3	1.531528457	::1	::1	TCP	94	41274 → 3000 [SYN] Seq=0 Win=65476 Len=0 MSS=65476 SACK_PERM TSval=303382752 TSecr=0 WS=1024
+4	1.531552320	::1	::1	TCP	94	3000 → 41274 [SYN, ACK] Seq=0 Ack=1 Win=65464 Len=0 MSS=65476 SACK_PERM TSval=1772189299 TSecr=303382752 WS=1024
+5	1.531568199	::1	::1	TCP	86	41274 → 3000 [ACK] Seq=1 Ack=1 Win=65536 Len=0 TSval=303382752 TSecr=1772189299
+
