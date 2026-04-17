@@ -1,0 +1,27 @@
+sequenceDiagram
+    participant Client
+    participant Server
+
+    Note over Client: State: Idle
+    Note over Server: State: Idle
+
+    Client->>Server: ClientHello (supported ciphers, random)
+    Note over Client: State: ClientHelloSent
+
+    Server->>Client: ServerHello (chosen cipher, random)
+    Server->>Client: Certificate (server public key)
+    Server->>Client: ServerHelloDone
+    Note over Server: State: ServerHelloDone
+
+    Client->>Server: ClientKeyExchange (encrypted pre-master secret)
+    Client->>Server: ChangeCipherSpec
+    Client->>Server: Finished (client verify data)
+    Note over Client: State: KeyExchangeSent
+
+    Server->>Client: ChangeCipherSpec
+    Server->>Client: Finished (server verify data)
+    Note over Server: State: Established
+
+    Note over Client: State: Established
+    Note over Client,Server: TLS Session Active — encrypted communication begins
+
