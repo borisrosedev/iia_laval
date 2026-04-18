@@ -1,19 +1,10 @@
 sequenceDiagram
-    participant C as Client
-    participant S as Serveur
+    participant Client
+    participant Server
     
-    Note over C, S: Connexion TCP déjà établie
+    Client->>Server: ClientHello<br/>(TLS 1.3, AES_256, Curve25519)
+    Server->>Client: ServerHello<br/>(AES_256 selected)
+    Server->>Client: Certificate<br/>(ServeurOfficiel, Signature valide)
+    Client->>Server: Finished<br/>(Verification OK)
     
-    Note over C: Étape 1: ClientHello
-    C->>S: ClientHello (CipherSuites, Random_C, KeyShare)
-    
-    Note over S: Étape 2: ServerHello
-    S->>C: ServerHello (SelectedSuite, Random_S, KeyShare)
-    
-    Note over S: Étape 3: Authentification
-    S->>C: EncryptedExtensions, Certificate, Finished
-    
-    Note over C: Étape 4: Confirmation Client
-    C->>S: Finished
-    
-    Note over C, S: Canal sécurisé établi (Application Data)
+    Note over Client,Server: Tunnel sécurisé établi
