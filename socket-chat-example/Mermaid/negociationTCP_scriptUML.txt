@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant C as Client (SYN_SENT)
+    participant S as Serveur (LISTEN / SYN_RCVD)
+    
+    Note over C, S: Étape 1: Demande de connexion
+    C->>S: SYN (Seq=X, Ack=0)
+    
+    Note over S: Le serveur prépare les ressources
+    
+    Note over C, S: Étape 2: Réponse du serveur
+    S->>C: SYN-ACK (Seq=Y, Ack=X+1)
+    
+    Note over C: Le client vérifie l'Ack
+    
+    Note over C, S: Étape 3: Confirmation finale
+    C->>S: ACK (Seq=X+1, Ack=Y+1)
+    
+    Note over C, S: Connexion Établie (ESTABLISHED)

@@ -1,0 +1,19 @@
+sequenceDiagram
+    participant C as Client
+    participant S as Serveur
+    
+    Note over C, S: Connexion TCP déjà établie
+    
+    Note over C: Étape 1: ClientHello
+    C->>S: ClientHello (CipherSuites, Random_C, KeyShare)
+    
+    Note over S: Étape 2: ServerHello
+    S->>C: ServerHello (SelectedSuite, Random_S, KeyShare)
+    
+    Note over S: Étape 3: Authentification
+    S->>C: EncryptedExtensions, Certificate, Finished
+    
+    Note over C: Étape 4: Confirmation Client
+    C->>S: Finished
+    
+    Note over C, S: Canal sécurisé établi (Application Data)
