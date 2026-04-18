@@ -1,0 +1,30 @@
+sequenceDiagram
+    participant User
+    participant Main
+    participant TcpStream
+    participant stdout
+
+    User->>Main: Run program
+    Main->>Main: Set target_ip = 127.0.0.1
+    Main->>Main: Set timeout = 200ms
+    Main->>stdout: Print "Scan des ports sur..."
+    
+    loop for port in 1..3000
+        Main->>Main: Build address IP:PORT
+        Main->>TcpStream: connect_timeout(address, timeout)
+        alt Connection Success
+            TcpStream-->>Main: Ok(_stream)
+            Main->>stdout: Print "[+] Port X est OUVERT"
+        else Connection Failed
+            TcpStream-->>Main: Err
+            Main->>Main: Continue to next port
+        end
+        
+        alt port % 10 == 0
+            Main->>stdout: Print "."
+            Main->>stdout: flush()
+        end
+    end
+    
+    Main->>stdout: Print "Scan terminé !"
+    Main->>User: Program ends

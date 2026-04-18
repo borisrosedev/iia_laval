@@ -1,1 +1,2 @@
 commande curl powershell : curl.exe -X POST http://localhost:3000/api/v1/users -H "Content-Type: application/json" -d '{\"email\": \"test@exemple.com\", \"password\": \"monMotDePasse123\"}'
+commande wire shark SYN  - SYN ACK - ACK: tcp.flags.syn == 1 or (tcp.seq == 1 and tcp.ack == 1 and tcp.len == 0)
