@@ -1,13 +1,13 @@
 sequenceDiagram
-    participant Client
-    participant Serveur
+    participant C as Client
+    participant S as Serveur
 
-    Client->>Serveur: ClientHello (Paramètres proposés par le client)
-    Serveur->>Client: ServerHelloc(Paramètres choisis par le serveur)
-    Serveur->>Client: Certificat (Identité du serveur)
-    Client->>Serveur: Échange de clé
-    Client->>Serveur: Activation du chiffrement (ChangeCipherSpec)
-    Client->>Serveur: Message de fin
-    Serveur->>Client: Activation du chiffrement (ChangeCipherSpec)
-    Serveur->>Client: Message de fin
-    Note over Client,Serveur: Session TLS chiffrée établie
+    C->>S: ClientHello (versions TLS + suites cryptographiques proposées)
+    S->>C: ServerHello (version et suite retenues)
+    S->>C: Certificat X.509 (identité du serveur)
+    C->>S: KeyExchange (clé de session chiffrée)
+    C->>S: ChangeCipherSpec (activation du chiffrement côté client)
+    C->>S: Finished (hash chiffré du handshake)
+    S->>C: ChangeCipherSpec (activation du chiffrement côté serveur)
+    S->>C: Finished (hash chiffré du handshake)
+    Note over C,S: Session TLS chiffrée et authentifiée établie
