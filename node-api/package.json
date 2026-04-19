@@ -1,14 +1,14 @@
 {
-  "name": "api",
+  "name": "mini-node-service",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Service Express pour les tests reseau",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No automated tests configured\" && exit 1",
     "dev": "node --watch server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marwane",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {

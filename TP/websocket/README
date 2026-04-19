@@ -1,0 +1,92 @@
+// RSX102 Technologies pour les applications en réseau
+// TP : WebSocket
+// Il y a de nombreuses dépendances à importer dans le code afin de faire un serveur WebSocket.
+// Les dépendances nécessaires :
+// const express = require('express');
+//     • Il permet de créer la base de l'API et le serveur Web
+
+// const { createServer } = require('node:http');
+//     • Il permet de créer un serveur HTTP natif Node.js
+
+// const { Server } = require('socket.io');
+//     • Il permet l'utilisation de WebSocket dans le serveur
+
+// const sqlite3 = require('sqlite3');
+// const { open } = require('sqlite');
+//     • Ils permettent de sauvegarder les messages dans une base de données SQLite (chat.db)
+
+// const cluster = require('node:cluster');
+// const { createAdapter, setupPrimary } = require('@socket.io/cluster-adapter');
+//     • Ils permettent de lancer plusieurs workers en parallèle, un par cœur CPU disponible
+
+// ============================================================
+// DÉMARRAGE DU SERVEUR AVEC CLUSTER
+// ============================================================
+// if (cluster.isPrimary) {
+//   const numCPUs = availableParallelism();
+//   for (let i = 0; i < numCPUs; i++) {
+//     cluster.fork({ PORT: 3000 + i });
+//   }
+//   return setupPrimary();
+// }
+//     • Le processus principal détecte le nombre de cœurs CPU et lance un worker par cœur.
+//       Chaque worker écoute sur un port différent (3000, 3001, etc ...).
+
+// ============================================================
+// BASE DE DONNÉES
+// ============================================================
+// const db = await open({ filename: 'chat.db', driver: sqlite3.Database });
+//     • Ouvre (ou crée) la base de données SQLite dans le fichier chat.db.
+
+// await db.exec(`CREATE TABLE IF NOT EXISTS messages (...)`);
+//     • Crée la table messages si elle n'existe pas encore.
+//       Le champ client_offset est UNIQUE pour éviter les doublons.
+
+// ============================================================
+// GESTION DE CONNEXION WEBSOCKET
+// ============================================================
+// io.on('connection', async (socket) => { ... });
+//     • Permet de détecter et gérer chaque nouvelle connexion Socket.IO.
+//       On peut y ajouter des blocs pour gérer les connexions,
+//       déconnexions, réception de messages, etc ...
+
+// ============================================================
+// ENVOYER UN MESSAGE
+// ============================================================
+// socket.emit('chat message', input.value, clientOffset);
+//     • Côté client (index.html) : envoie le message saisi au serveur
+//       avec un identifiant unique (clientOffset) pour éviter les doublons.
+
+// io.emit('chat message', msg, result.lastID);
+//     • Côté serveur : broadcast le message à tous les clients connectés.
+
+// ============================================================
+// RÉCUPÉRER UN MESSAGE
+// ============================================================
+// socket.on('chat message', (msg, serverOffset) => { ... });
+//     • Côté client (index.html) : reçoit les messages et les affiche dans la liste.
+//       Met aussi à jour le serverOffset pour savoir où on en est.
+
+// ============================================================
+// RÉCUPÉRATION DES MESSAGES À LA RECONNEXION
+// ============================================================
+// const io = new Server(server, { connectionStateRecovery: {} });
+//     • Active la récupération automatique d'état lors d'une reconnexion.
+
+// if (!socket.recovered) {
+//   await db.each('SELECT id, content FROM messages WHERE id > ?', ...)
+// }
+//     • Si le client s'est reconnecté et n'a pas récupéré ses messages automatiquement,
+//       le serveur lui renvoie tous les messages manqués depuis son dernier offset connu.
+
+// ============================================================
+// DÉMARRAGE DU SERVEUR
+// ============================================================
+// server.listen(port, () => { console.log(`server running at http://localhost:${port}`); });
+//     • Lance le serveur et commence à écouter sur le port défini par la variable PORT.
+
+// ============================================================
+// LANCER LE PROJET
+// ============================================================
+// npm install       -> installe toutes les dépendances
+// npm run dev       -> démarre le serveur avec rechargement automatique (node --watch)
