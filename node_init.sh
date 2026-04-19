@@ -1,7 +1,7 @@
 #!/bin/bash
 
 create_node_api_boilerplate() {
-    cd node-api
+    cd SOcket
 
     npm init -y
     npm install -D cors express dotenv
