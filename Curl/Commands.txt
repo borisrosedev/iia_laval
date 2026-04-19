@@ -1,0 +1,6 @@
+curl localhost:3000
+{"message":"All Good"}
+
+curl -d "email=sebeh&password=oui"  -X POST http://localhost:3000/api/v1/users
+{"message":"user created"}
+
