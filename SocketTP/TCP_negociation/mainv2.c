@@ -16,10 +16,10 @@ int main() {
     printf("Client -> Serveur : ACK\n");
     sleep(1);
 
-    printf("\nConnexion TCP établie !\n");
+    printf("\nConnexion TCP etablie !\n");
 
     // Simulation d'échange de données
-    printf("\n=== Échange de données ===\n");
+    printf("\n=== echange de donnees ===\n");
     printf("Client -> Serveur : \"Bonjour\"\n");
     sleep(1);
 
@@ -44,3 +44,4 @@ int main() {
 
     return 0;
 }
+
