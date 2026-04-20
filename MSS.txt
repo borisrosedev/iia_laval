@@ -1,0 +1,18 @@
+Q1.
+MSS retenu par les deux hôtes : 1200 octets.
+Lors de la négociation TCP, chaque hôte utilise le plus petit MSS annoncé (min(1460, 1200) = 1200).
+
+Q2.
+Un segment de données de 1300 octets ne sera pas envoyé en un seul segment TCP, car il dépasse le MSS retenu (1200).
+TCP découpera les 1300 octets en plusieurs segments (par exemple 1200 + 100), chacun de taille ≤ 1200 données.
+Les paquets IP résultants ont au plus 1200 données + 20 TCP + 20 IP = 1240 octets, ce qui reste strictement inférieur aux MTU 1500 et 1280 : il n’y a donc pas de fragmentation dans le réseau.
+
+Q3.
+Taille totale d’un segment TCP transportant 1000 octets de données (sans option IP/TCP) :
+1000 données + 20 TCP + 20 IP = 1040 octets.
+Réponse : 1040 octets.
+
+Q4.
+Si l’en‑tête TCP inclut l’option MSS (4 octets), la taille du premier paquet SYN est :
+0 données + (20 + 4) TCP + 20 IP = 44 octets.
+Réponse : 44 octets.
