@@ -1,0 +1,13 @@
+DEF POD
+
+Un pod est la plus petite unité d’exécution dans Kubernetes.
+C’est un “paquet” qui contient :
+    un ou plusieurs conteneurs (souvent un seul)
+    leurs ressources (CPU, RAM)
+    leur configuration
+    leur réseau (adresse IP interne)
+    leur système de fichiers temporaire
+Un pod représente une instance d’application qui tourne dans le cluster.
+
+Un pod est l’unité de base dans Kubernetes : c’est un conteneur (ou un petit groupe de conteneurs) 
+que Kubernetes lance, surveille et redémarre automatiquement si nécessaire.
