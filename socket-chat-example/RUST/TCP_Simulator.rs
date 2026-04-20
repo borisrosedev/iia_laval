@@ -3,6 +3,21 @@ use std::net::{TcpListener, TcpStream};
 use std::thread;
 use std::time::Duration;
 
+/*
+
+CODE MERMAID : 
+sequenceDiagram
+    participant Client
+    participant Server
+    Client->>Server: SYN
+    Server->>Client: SYN-ACK
+    Client->>Server: ACK
+    Note over Client,Server: Connexion établie
+
+*/
+
+
+
 fn main() {
 	let addr = "127.0.0.1:4000";
 
