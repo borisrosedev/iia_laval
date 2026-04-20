@@ -1,4 +1,0 @@
-1.Le MSS server car il faut prendre le minimum (1200)
-2. Oui car il dépasse 1300 > 1200, il sera donc segmenté
-3.1000 + 20(ip) + 20(tcp) = 1040 octets
-4. 44 octets 20+20+4
