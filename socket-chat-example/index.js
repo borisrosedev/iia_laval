@@ -49,7 +49,7 @@ async function main() {
         res.sendFile(join(__dirname, 'index.html'));
     });
 
-    io.on('connection', async (socket) => {
+    io.on('connection', async (socket) => { 
         socket.on('chat message', async (msg, clientOffset, callback) => {
             let result;
             try {
