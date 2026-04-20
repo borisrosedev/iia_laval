@@ -1,0 +1,4 @@
+1200 car valeur proposée la plus petite
+1300 est fragmenté car MSS de 1200
+1000
+24 octets
