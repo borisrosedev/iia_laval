@@ -1,0 +1,34 @@
+Q1/
+Client annonce : 1460 octets
+Serveur annonce : 1200 octets
+
+Le MSS final sera égale à 1200 octets car le TCP choisit toujours la valeur la plus petite 
+pour éviter la fragmentation.
+
+Q2/ 
+MSS retenu = 1200 octets
+Segment envoyé = 1300 octets
+
+Oui, il sera fragmenté car TCP ne doit pas envoyer un segment plus grand que le MSS
+1300 > 1200 -> dépasse la limite
+
+Q3/
+En-tête IP = 20 octets
+En-tête TCP = 20 octets
+Données = 1000 octets
+
+1000+20+20=1040 octets
+
+Taille totale = 1040 octets
+
+Q4/
+Dans un paquet SYN :
+
+En-tête IP = 20 octets
+En-tête TCP = 20 octets
+Option MSS = 4 octets
+Données = 0 (SYN ne transporte pas de données)
+
+20+20+4=44 octets
+
+Taille du SYN = 44 octets
