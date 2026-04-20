@@ -5,9 +5,20 @@ const app = express()
 app.set('port', process.env.PORT);
 app.set('host', process.env.HOST);
 
+
+app.use(express.urlencoded({ extended : true}))
 app.use(express.json({ limit: '10mb'}))
 app.get("/", (req, res) => {
     res.status(200).json({ message: "All Good" })
+})
+
+app.post("/api/v1/users", (req, res) => {
+    const body = req.body
+    const email = body.email
+    const password = body.password
+    console.log("server log: email ==>" + email)
+    console.log("server log: password ==>" + password)
+    return res.status(201).json({message: "user created"})
 })
 
 app.listen(app.get('port'),() => {
