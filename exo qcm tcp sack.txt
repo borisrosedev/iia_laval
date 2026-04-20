@@ -1,0 +1,4 @@
+segments reçus : 1, 3, 5, 7
+blocs manquants : 2, 4, 6
+blocs reçus : 1, 3, 5, 7
+blocs retransmis : 2, 4, 6
