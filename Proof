@@ -5,3 +5,9 @@ Q1 : 1200 bytes car c'est la valeur la plus petite des 2 mss présentés
 Q2 : Pas fragmenté car la taille maximal sans fragmentation est 1500 
 Q3 : 1040 est la taille total du segment
 Q4 : Le paquet SYN fait 44 car 20o (en-tête IP), 20o (en tête TCP) 4o option MSS
+
+
+
+Le multihoming (ou multi-rattachement réseau) désigne le fait pour un hôte, 
+un réseau ou une organisation d’être connecté simultanément à plusieurs réseaux distincts,
+souvent via plusieurs fournisseurs d’accès (FAI) ou plusieurs interfaces.
