@@ -1,0 +1,4 @@
+q1 1200 bytes car c'est la valeur la plus petite des 2 mss présentés
+q2 oui, car mss = 1200 bytes et 1300 > 1200
+q3 1000 + 20 + 4 bytes
+q4 24 bytes (20 + mss)
