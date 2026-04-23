@@ -1,0 +1,12 @@
+sequenceDiagram
+
+
+    participant Client
+    participant Server
+    
+    Client->>Server: SYN (Seq=100, Ack=0)
+    Note over Server: Receive SYN
+    Server->>Client: SYN-ACK (Seq=500, Ack=101)
+    Note over Client: Receive SYN-ACK
+    Client->>Server: ACK (Seq=101, Ack=501)
+    Note over Client,Server: Connection ESTABLISHED

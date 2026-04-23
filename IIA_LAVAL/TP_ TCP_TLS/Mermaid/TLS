@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant Client
+    participant Server
+    
+    Client->>Server: ClientHello(TLS 1.3, AES_256_GCM)
+    Server->>Client: ServerHello(Certificate, PublicKey)
+    Client->>Server: ClientKeyExchange(EncryptedSecret)
+    Server->>Client: Finished(HandshakeHash)
+    
+    Note over Client,Server: TLS Connection Established<br/>(Encryption Active)
