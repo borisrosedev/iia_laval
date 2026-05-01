@@ -1,56 +1,47 @@
 const http = require('http')
 
-const serverHandler = (req, res) => {
 
-    req.on('connect', () => {
+const server = http.createServer()
 
-
-        if (req.method == "POST" && req.url == "/api/v1/users") {
-            const buffer = []
-
-        
-            req.on('data', (chunk) => {
-                buffer.push(chunk.toString("utf-8"))
-            })
-
-            req.on('end', () => {
-                console.log(buffer)
-                return res.end("end")
-            })
-
-            res.end("Post")
-
-        }
+server.on('request', (req, res) => {
 
 
+    if (req.method == "POST" && req.url == "/api/v1/users") {
+        const buffer = []
 
-        if(req.method == "GET" && req.url == "/" ) {
-            const headers = new Headers({ foo: 'boris' });
-            res.setHeaders(headers)
-            return res.end("Hello World!")
-        }
+        req.on('data', (chunk) => {
+            console.log('✅ [data] event')
+            buffer.push(chunk.toString("utf-8"))    
+        })
+
+        req.on('end', () => {
+            console.log('[end] event')
+            const body = JSON.parse(buffer.toString())
+            const email = body.email 
+            const password = body.password
+            console.log("email: " , email)
+            console.log("password: ", password)
+            return res.end("user logged in")
+        })
+
+    }
 
 
+    if(req.method == "GET" && req.url == "/" ) {
+        const headers = new Headers({ foo: 'boris' });
+        res.setHeaders(headers)
+        return res.end("Hello World!")
+    }
 
-        return res.end("No answer 1")
 
+    
 
-
-
-
-    })
+})
   
 
-    return res.end("No answer 2")
 
 
 
-
-
-}
-
-
-const server = http.createServer(serverHandler)
 server.listen(3001, () => {
     console.log('Server running at http://localhost:3001')
 })
