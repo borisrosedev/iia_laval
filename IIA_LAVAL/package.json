@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@socket.io/cluster-adapter": "^0.3.0"
+  }
+}

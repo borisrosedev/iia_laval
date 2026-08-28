@@ -1,0 +1,8 @@
+1.	LE MSS retenu sera de 1200 octets car c’est le plus petit 
+
+2.	Oui fragementé
+    Segement 1 : 1200 octets
+
+    Segement 2 : 100 octets
+
+3. 1040 car 100 + 20(TCP) + 20(IP) 
